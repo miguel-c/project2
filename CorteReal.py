@@ -4,8 +4,6 @@ import sys
 #   CSC 1800-002 Programming Assignment #2
 #   Last updated by Miguel Corte-Real on 9/12/16
 # ************************************************
-file = open("myFamily.txt", 'r')
-sys.stdin = file
 
 # Initialize a dictionary representing the family tree
 family_tree = {}
