@@ -127,12 +127,6 @@ class Person:
         if spouse not in self.spouses:
             self.spouses.append(spouse)
 
-    def get_ancestors(self, ancestors):
-        ancestors.append(self)
-        if len(self.parents) != 0:
-            ancestors.append(self.parents[0].get_ancestors(ancestors))
-            ancestors.append(self.parents[1].get_ancestors(ancestors))
-        return ancestors
 
 # Read the input, build tree, and handle queries
 for line in sys.stdin:
