@@ -93,11 +93,25 @@ def get_half_siblings(p):
                          - (set(p.parents[0].children) & set(p.parents[1].children)))
     return [hs for hs in half_siblings if hs is not p]
 
+def get_set_of_ancestors(p):
+    # Here is essentially my code from java
+    # It is not possible to use a recursive solution and not include the parents
+    # So this is going to be called from the actual get_ancestors function for each parent
+    # This is kinda dirty but I think it's cleaner and less confusing than doing it without recursion
+    ancestorSet = set(p.parents)
+    
+    if len(p.parents) == 0:
+        return ancestorSet
+    
+    return ancestorSet | get_set_of_ancestors(p.parents[0]) | get_set_of_ancestors(p.parents[1])
 
-# TODO: get_ancestors
-# def get_ancestors(p):
-#     # do stuff
 
+def get_ancestors(p):
+    # All this does is call the actual method on each parent and combine them
+    if len(p.parents) == 0:
+        return set([])
+    
+    return get_set_of_ancestors(p.parents[0]) | get_set_of_ancestors(p.parents[1])
 
 def get_person(name):
     if name in family_tree.keys():
