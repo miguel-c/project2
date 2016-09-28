@@ -121,6 +121,21 @@ def get_person(name):
         family_tree[person.name] = person
     return person
 
+def get_unrelated(p):
+    if len(p.parents) == 0:
+        return []
+    
+    #Entire Family Tree list
+    entirefamily = list(family_tree.values())
+    
+    #All related family members - (need to add all spouses, siblings, half siblings, cousins and ancestors(parents) of p)
+    # allrelated = list(set(p.children) & set(p.spouses) & set(p.parents))
+    #figuring out how to add cousins, ancestors, and halfsiblings.
+    
+    #Unrelated = Entire family - all related of p
+    unrelated = list(set(entirefamily) - set(allrelated))
+    
+    return [u for u in unrelated if u is not p]
 
 # The Person class
 class Person:
