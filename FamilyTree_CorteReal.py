@@ -34,7 +34,8 @@ def handle_r_query(splitstr):
         return "sibling"
     if p1 in get_half_siblings(p2):
         return "half-sibling"
-    # TODO: ancestor
+    if p1 in get_ancestors(p2):
+        return "ancestor"
     # TODO: cousin
     return "unrelated"
 
@@ -51,7 +52,8 @@ def handle_x_query(splitstr):
         return p1 in get_siblings(p2)
     elif relation == "half-sibling":
         return p1 in get_half_siblings(p2)
-    # TODO: ancestor
+    elif relation == "ancestor":
+        return p1 in get_ancestors(p2)
     # TODO: cousin
     # TODO: unrelated
 
@@ -68,7 +70,8 @@ def handle_w_query(splitstr):
         names = sorted([s.name for s in get_siblings(p)])
     if relation == "half-sibling":
         names = sorted([hs.name for hs in get_half_siblings(p)])
-    # TODO: ancestor
+    if relation == "ancestor":
+        names = sorted([a.name for a in get_ancestors(p)])
     # TODO: cousin
     # TODO: unrelated
     for name in names:
@@ -88,16 +91,14 @@ def get_siblings(p):
 
 def get_half_siblings(p):
     if len(p.parents) == 0:
-        return[]
+        return []
     half_siblings = list((set(p.parents[0].children) | set(p.parents[1].children))
                          - (set(p.parents[0].children) & set(p.parents[1].children)))
     return [hs for hs in half_siblings if hs is not p]
 
 def get_set_of_ancestors(p):
-    # Here is essentially my code from java
     # It is not possible to use a recursive solution and not include the parents
     # So this is going to be called from the actual get_ancestors function for each parent
-    # This is kinda dirty but I think it's cleaner and less confusing than doing it without recursion
     ancestorSet = set(p.parents)
     
     if len(p.parents) == 0:

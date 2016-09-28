@@ -1,0 +1,70 @@
+E Antonia Jose Luisa
+E Tunas Liliane
+E Tunas Liliane Filipe
+E Tunas Liliane Diogo
+E Antonia Jose Conceicao
+E Tunas Liliane Mafalda
+E Antonia Jose Rita
+E Antonia Jose Maria
+E Tunas Liliane Monica
+E Filipe Ines Pipo
+E Luisa Diogo
+E Mafalda Joao
+E Luisa Diogo Ze
+E Mafalda Joao Johnny
+E Luisa Diogo Miguel
+E Monica Sottomayor
+E Mafalda Joao Kiko
+E Rita Antonio luisa
+E Monica Sottomayor Pedro
+E Maria Manuel
+E Maria Manuel Carlota
+E Monica Sottomayor Alice
+E Luisa Diogo diogo
+E Filipe Ines Lourenco
+E Rita Antonio Teresa
+E Mafalda Joao Caco
+E Monica Sottomayor Tomas
+E Maria Manuel Bernardo
+E Rita Joey Amy
+W ancestor Miguel
+W spouse Luisa
+W spouse Antonio
+W parent Kiko
+W sibling Tomas
+W parent Tunas
+W sibling Antonia
+W spouse Miguel
+W ancestor Liliane
+X Miguel sibling Ze
+X Ze sibling Miguel
+X Ze sibling Kiko
+X Diogo spouse Luisa
+X Luisa spouse Diogo
+X Luisa spouse Monica
+X Luisa parent Miguel
+X Miguel parent Luisa
+X Kiko half-sibling Caco
+X Antonia ancestor Miguel
+X Miguel ancestor Antonia
+R Miguel Ze
+R Miguel Luisa
+R Luisa Miguel
+R Miguel Jose
+R Jose Miguel
+R Luisa Diogo
+R Luisa Rita
+R Luisa Chris
+R Luisa Mafalda
+W sibling luisa
+X luisa sibling Amy
+R luisa Amy
+X luisa half-sibling Amy
+W half-sibling luisa
+W cousin Miguel
+E Pat Julia girl
+E Diogo Luisa boy
+W unrelated Miguel
+W sibling Miguel
+X Miguel unrelated Pat
+X Miguel unrelated Ze
