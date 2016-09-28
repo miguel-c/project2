@@ -2,7 +2,11 @@ import sys
 
 # ************************************************
 #   CSC 1800-002 Programming Assignment #2
-#   Last updated by Miguel Corte-Real on 9/12/16
+#
+#   Miguel Corte-Real
+#   Nazelie Doghramadjian
+#   Darryl Hannan
+#   Dylan Le
 # ************************************************
 
 # Initialize a dictionary representing the family tree
@@ -55,7 +59,8 @@ def handle_x_query(splitstr):
     elif relation == "ancestor":
         return p1 in get_ancestors(p2)
     # TODO: cousin
-    # TODO: unrelated
+    elif relation == "unrelated":
+        return p1 in get_unrelated(p2)
 
 
 def handle_w_query(splitstr):
@@ -71,9 +76,10 @@ def handle_w_query(splitstr):
     if relation == "half-sibling":
         names = sorted([hs.name for hs in get_half_siblings(p)])
     if relation == "ancestor":
-        names = sorted([a.name for a in get_ancestors(p)])
+        names = sorted([a.name for a in set(get_ancestors(p))])
     # TODO: cousin
-    # TODO: unrelated
+    if relation == "unrelated":
+        names = sorted([u.name for u in get_unrelated(p)])
     for name in names:
         print(name)
 
@@ -96,23 +102,25 @@ def get_half_siblings(p):
                          - (set(p.parents[0].children) & set(p.parents[1].children)))
     return [hs for hs in half_siblings if hs is not p]
 
+
 def get_set_of_ancestors(p):
     # It is not possible to use a recursive solution and not include the parents
     # So this is going to be called from the actual get_ancestors function for each parent
-    ancestorSet = set(p.parents)
-    
+    ancestor = p.parents
+
     if len(p.parents) == 0:
-        return ancestorSet
+        return ancestor
     
-    return ancestorSet | get_set_of_ancestors(p.parents[0]) | get_set_of_ancestors(p.parents[1])
+    return ancestor + get_set_of_ancestors(p.parents[0]) + get_set_of_ancestors(p.parents[1])
 
 
 def get_ancestors(p):
     # All this does is call the actual method on each parent and combine them
     if len(p.parents) == 0:
-        return set([])
-    
-    return get_set_of_ancestors(p.parents[0]) | get_set_of_ancestors(p.parents[1])
+        return []
+
+    return get_set_of_ancestors(p.parents[0]) + get_set_of_ancestors(p.parents[1])
+
 
 def get_person(name):
     if name in family_tree.keys():
@@ -122,21 +130,12 @@ def get_person(name):
         family_tree[person.name] = person
     return person
 
+
 def get_unrelated(p):
-    if len(p.parents) == 0:
-        return []
-    
-    #Entire Family Tree list
-    entirefamily = list(family_tree.values())
-    
-    #All related family members - (need to add all spouses, siblings, half siblings, cousins and ancestors(parents) of p)
-    # allrelated = list(set(p.children) & set(p.spouses) & set(p.parents))
-    #figuring out how to add cousins, ancestors, and halfsiblings.
-    
-    #Unrelated = Entire family - all related of p
-    unrelated = list(set(entirefamily) - set(allrelated))
-    
-    return [u for u in unrelated if u is not p]
+    relations = p.children + p.spouses + p.parents + get_siblings(p) + get_half_siblings(p) + get_ancestors(p)
+    # TODO: Add cousins as well.
+    return [u for u in family_tree.values() if u not in relations]
+
 
 # The Person class
 class Person:
