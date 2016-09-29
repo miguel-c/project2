@@ -40,7 +40,8 @@ def handle_r_query(splitstr):
         return "half-sibling"
     if p1 in get_ancestors(p2):
         return "ancestor"
-    # TODO: cousin
+    if p1 in get_cousins(p2):
+        return "cousin"
     return "unrelated"
 
 
@@ -58,7 +59,8 @@ def handle_x_query(splitstr):
         return p1 in get_half_siblings(p2)
     elif relation == "ancestor":
         return p1 in get_ancestors(p2)
-    # TODO: cousin
+    elif relation == "cousin":
+        return p1 in get_cousins(p2)
     elif relation == "unrelated":
         return p1 in get_unrelated(p2)
 
@@ -77,7 +79,8 @@ def handle_w_query(splitstr):
         names = sorted([hs.name for hs in get_half_siblings(p)])
     if relation == "ancestor":
         names = sorted([a.name for a in set(get_ancestors(p))])
-    # TODO: cousin
+    if relation == "cousin":
+        names = sorted([c.name for c in set(get_cousins(p))])
     if relation == "unrelated":
         names = sorted([u.name for u in get_unrelated(p)])
     for name in names:
@@ -121,7 +124,44 @@ def get_ancestors(p):
 
     return get_set_of_ancestors(p.parents[0]) + get_set_of_ancestors(p.parents[1])
 
+    
+def get_descendants(p):
+    # loops through each child and gets their children
+    descendants = []
+    if len(p.children) == 0:
+        return descendants
 
+    for child in children:
+        descendants = descendants.add(child)
+        descendants = deescendants.update(get_descendants(child))
+        
+    return descendants
+
+
+def get_cousins(p):
+    # Gets parents' siblings, and all their respective kids recursively
+    # Gets siblings' kids, and their kids, etc.
+    masterList = []
+    get_set_of_ancestors(p)
+    ancestorSet = set(get_set_of_ancestors(p))
+    for member in ancestorSet:
+        siblings = get_siblings(member)
+        siblings = siblings.update(get_half_siblings(member))
+        masterList = masterList.update(siblings)
+        for desc in siblings:
+            descendants = get_descendants(desc)
+            masterList = masterList.update(descendants)
+        
+
+    siblingSet = get_siblings(p)
+    siblingSet = siblingSet.update(get_half_siblings(p))
+    for sib in siblingSet:
+        descendants = get_descendants(sib)
+        masterList = masterList.update(descendants)        
+
+    return masterList
+
+    
 def get_person(name):
     if name in family_tree.keys():
         person = family_tree.get(name)
