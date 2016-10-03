@@ -106,34 +106,21 @@ def get_half_siblings(p):
     return [hs for hs in half_siblings if hs is not p]
 
 
-def get_set_of_ancestors(p):
-    # It is not possible to use a recursive solution and not include the parents
-    # So this is going to be called from the actual get_ancestors function for each parent
-    ancestor = p.parents
-
-    if len(p.parents) == 0:
-        return ancestor
-    
-    return ancestor + get_set_of_ancestors(p.parents[0]) + get_set_of_ancestors(p.parents[1])
-
-
 def get_ancestors(p):
-    # All this does is call the actual method on each parent and combine them
     if len(p.parents) == 0:
-        return []
-
-    return get_set_of_ancestors(p.parents[0]) + get_set_of_ancestors(p.parents[1])
+        return [p]
+    return p.parents + get_ancestors(p.parents[0]) + get_ancestors(p.parents[1])
 
     
 def get_descendants(p):
-    # loops through each child and gets their children
+    # Loops through each child and gets their children
     descendants = []
     if len(p.children) == 0:
         return descendants
 
-    for child in children:
-        descendants = descendants.add(child)
-        descendants = deescendants.update(get_descendants(child))
+    for child in p.children:
+        descendants.append(child)
+        descendants.extend(get_descendants(child))
         
     return descendants
 
@@ -141,25 +128,21 @@ def get_descendants(p):
 def get_cousins(p):
     # Gets parents' siblings, and all their respective kids recursively
     # Gets siblings' kids, and their kids, etc.
-    masterList = []
-    get_set_of_ancestors(p)
-    ancestorSet = set(get_set_of_ancestors(p))
-    for member in ancestorSet:
-        siblings = get_siblings(member)
-        siblings = siblings.update(get_half_siblings(member))
-        masterList = masterList.update(siblings)
+    master_list = []
+    siblings = []
+    for member in set(get_ancestors(p)):
+        siblings.extend(get_siblings(member))
+        siblings.extend(get_half_siblings(member))
+        master_list.extend(siblings)
         for desc in siblings:
             descendants = get_descendants(desc)
-            masterList = masterList.update(descendants)
-        
+            master_list.extend(descendants)
 
-    siblingSet = get_siblings(p)
-    siblingSet = siblingSet.update(get_half_siblings(p))
-    for sib in siblingSet:
+    for sib in set(siblings):
         descendants = get_descendants(sib)
-        masterList = masterList.update(descendants)        
+        master_list.extend(descendants)
 
-    return masterList
+    return master_list
 
     
 def get_person(name):
@@ -172,8 +155,8 @@ def get_person(name):
 
 
 def get_unrelated(p):
-    relations = p.children + p.spouses + p.parents + get_siblings(p) + get_half_siblings(p) + get_ancestors(p)
-    # TODO: Add cousins as well.
+    relations = p.children + p.spouses + p.parents + get_siblings(p) + \
+                get_half_siblings(p) + get_cousins(p) + get_ancestors(p)
     return [u for u in family_tree.values() if u not in relations]
 
 
