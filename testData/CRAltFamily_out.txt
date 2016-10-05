@@ -1,0 +1,151 @@
+
+W ancestor Miguel
+Antonia
+Diogo
+Jose
+Liliane
+Luisa
+Tunas
+
+W spouse Luisa
+Diogo
+
+W spouse Antonio
+Rita
+
+W parent Kiko
+Joao
+Mafalda
+
+W sibling Tomas
+Alice
+Pedro
+
+W parent Tunas
+
+W sibling Antonia
+
+W spouse Miguel
+
+W ancestor Liliane
+Liliane
+
+X Miguel sibling Ze
+Yes
+
+X Ze sibling Miguel
+Yes
+
+X Ze sibling Kiko
+No
+
+X Diogo spouse Luisa
+Yes
+
+X Luisa spouse Diogo
+Yes
+
+X Luisa spouse Monica
+No
+
+X Luisa parent Miguel
+Yes
+
+X Miguel parent Luisa
+No
+
+X Kiko half-sibling Caco
+No
+
+X Antonia ancestor Miguel
+Yes
+
+X Miguel ancestor Antonia
+No
+
+R Miguel Ze
+sibling
+
+R Miguel Luisa
+unrelated
+
+R Luisa Miguel
+parent
+
+R Miguel Jose
+unrelated
+
+R Jose Miguel
+ancestor
+
+R Luisa Diogo
+spouse
+
+R Luisa Rita
+sibling
+
+R Luisa Chris
+unrelated
+
+R Luisa Mafalda
+unrelated
+
+W sibling luisa
+Teresa
+
+X luisa sibling Amy
+No
+
+R luisa Amy
+half-sibling
+
+X luisa half-sibling Amy
+Yes
+
+W half-sibling luisa
+Amy
+
+W cousin Miguel
+Alice
+Amy
+Bernardo
+Caco
+Carlota
+Conceicao
+Filipe
+Johnny
+Kiko
+Lourenco
+Mafalda
+Maria
+Monica
+Pedro
+Pipo
+Rita
+Teresa
+Tomas
+luisa
+
+W unrelated Miguel
+Antonio
+Chris
+Ines
+Joao
+Joey
+Julia
+Manuel
+Miguel
+Pat
+Sottomayor
+girl
+
+W sibling Miguel
+Ze
+boy
+diogo
+
+X Miguel unrelated Pat
+Yes
+
+X Miguel unrelated Ze
+No
