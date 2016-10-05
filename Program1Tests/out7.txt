@@ -1,10 +1,11 @@
-
 W relative Turin
 
 W cousin Turin
 Adanel
+Aldil
 Beren
 BerenErchamion
+BrandirLame
 Dior
 Earendil
 Elrond
@@ -13,22 +14,46 @@ Elured
 Elurin
 Elwing
 Emeldir
+Galdor
+Gildis
 Gloredhel
 Gundor
+Hador
+Hadreth
+Haldad
+Haldan
+Haldanwen
+Haldar
 Haldir
 Haleth
+Halmir
+Halmirwen
 Handir
 Hardang
+Hareth
+Hathiswen
+Hathol
 Hiril
 Hundad
 Hundar
 Hunleth
 Hunthor
 Huor
+Hurin
 Imlach
+Magor
+Magorwen
+Malach
 Manthor
+Marach
+Mawen
 Meleth
+Morwen
+Nienor
 Tuor
+Urwen
+Zimrahin
 
 R Indis Miriel
 unrelated
+

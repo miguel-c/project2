@@ -250,7 +250,7 @@ E Elrond2 Celebrian2 Arwen2
 E Dirhael2 Ivorwen2 Gilraen2
 E Arathorn2 Gilraen2 Aragorn2
 E Aragorn2 Arwen2 Eldarion2
-W relative Elrond
-W relative Elrond2
+W cousin Elrond
+W cousin Elrond2
 W ancestor Elrond
 W ancestor Elrond2

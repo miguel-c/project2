@@ -1,0 +1,12 @@
+R Erskin Alex
+unrelated
+
+R Alex Armond
+ancestor
+
+R Armond Alex
+unrelated
+
+R Cammy Carter
+sibling
+

@@ -50,19 +50,19 @@ def handle_x_query(splitstr):
     p2 = get_person(splitstr[3])
     relation = splitstr[2]
     if relation == "spouse":
-        return p1 in p2.spouses
+        return "Yes" if p1 in p2.spouses else "No"
     elif relation == "parent":
-        return p1 in p2.parents
+        return "Yes" if p1 in p2.parents else "No"
     elif relation == "sibling":
-        return p1 in get_siblings(p2)
+        return "Yes" if p1 in get_siblings(p2) else "No"
     elif relation == "half-sibling":
-        return p1 in get_half_siblings(p2)
+        return "Yes" if p1 in get_half_siblings(p2) else "No"
     elif relation == "ancestor":
-        return p1 in get_ancestors(p2)
+        return "Yes" if p1 in get_ancestors(p2) else "No"
     elif relation == "cousin":
-        return p1 in get_cousins(p2)
+        return "Yes" if p1 in get_cousins(p2) else "No"
     elif relation == "unrelated":
-        return p1 in get_unrelated(p2)
+        return "Yes" if p1 in get_unrelated(p2) else "No"
 
 
 def handle_w_query(splitstr):

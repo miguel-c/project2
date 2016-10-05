@@ -96,7 +96,7 @@ E Earendil Elwing Elrond
 E Earendil Elwing Elros
 E Elros Minyawen Vardamir
 E Elros Minyawen Tindomiel
-W relative Turin
+W cousin Turin
 E Elros Minyawen Manwendil
 E Vardamir Vardamirwen TarAmandil
 E Vardamir Vardamirwen Vardilme
@@ -129,6 +129,6 @@ E Elrond Celebrian Arwen
 E Dirhael Ivorwen Gilraen
 E Arathorn Gilraen Aragorn
 E Aragorn Arwen Eldarion
-W relative Turin
+W cousin Turin
 R Turin Elladan
 X Haldir sibling Hareth

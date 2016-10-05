@@ -1,5 +1,5 @@
 E Alex Alberta Andrew
-E Authur AMelia AMY 
+E Authur Amelia Amy 
 E Andrew Amy Armond
 E Bert Beth Betty
 E Brenda Baylor Bradley
@@ -13,5 +13,5 @@ E David Drusilla Daniel
 E Elmer Emma Ervin
 E Ervin Esmerelda Erskin
 E Bill Amy Xerxes
-W relative Xerxes
+W cousin Xerxes
 R Xerxes Elmer

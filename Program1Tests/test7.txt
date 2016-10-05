@@ -95,7 +95,7 @@ E Dior Nimloth Elurin
 E Dior Nimloth Elwing
 E Earendil Elwing Elrond
 E Earendil Elwing Elros
-W relative Turin
+W cousin Turin
 E Elros Minyawen Vardamir
 E Elros Minyawen Tindomiel
 E Elros Minyawen Manwendil
