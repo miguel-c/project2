@@ -21,8 +21,7 @@ def handle_event(splitstr):
         p1.spouses.append(p2)
         p2.spouses.append(p1)
     if len(splitstr) is 4:
-        p3 = Person(splitstr[3], p1, p2)
-        family_tree[p3.name] = p3
+        p3 = get_person(splitstr[3], True, p1, p2)
         p1.children.append(p3)
         p2.children.append(p3)
 
@@ -138,6 +137,8 @@ def get_cousins(p):
             descendants = get_descendants(desc)
             master_list.extend(descendants)
 
+    siblings.extend(get_siblings(p))
+    siblings.extend(get_half_siblings(p))
     for sib in set(siblings):
         descendants = get_descendants(sib)
         master_list.extend(descendants)
@@ -145,11 +146,14 @@ def get_cousins(p):
     return master_list
 
     
-def get_person(name):
+def get_person(name, child=False, p1=None, p2=None):
     if name in family_tree.keys():
         person = family_tree.get(name)
-    else:
+    elif not child:
         person = Person(name)
+        family_tree[person.name] = person
+    else:
+        person = Person(name, p1, p2)
         family_tree[person.name] = person
     return person
 
