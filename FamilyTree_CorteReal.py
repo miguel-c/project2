@@ -107,7 +107,7 @@ def get_half_siblings(p):
 
 def get_ancestors(p):
     if len(p.parents) == 0:
-        return [p]
+        return []
     return p.parents + get_ancestors(p.parents[0]) + get_ancestors(p.parents[1])
 
     
