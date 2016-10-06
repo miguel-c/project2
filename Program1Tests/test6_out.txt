@@ -1,10 +1,18 @@
 
 W cousin Turin
+Hurin
+Morwen
+Nienor
+Urwen
 
 W cousin Turin
+Hurin
+Morwen
+Nienor
+Urwen
 
 R Turin Elladan
-cousin
+unrelated
 
 X Haldir sibling Hareth
 Yes

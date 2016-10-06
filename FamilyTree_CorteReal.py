@@ -128,20 +128,12 @@ def get_cousins(p):
     # Gets parents' siblings, and all their respective kids recursively
     # Gets siblings' kids, and their kids, etc.
     master_list = []
-    siblings = []
-    for member in set(get_ancestors(p)):
-        siblings.extend(get_siblings(member))
-        siblings.extend(get_half_siblings(member))
-        master_list.extend(siblings)
-        for desc in siblings:
-            descendants = get_descendants(desc)
-            master_list.extend(descendants)
 
-    siblings.extend(get_siblings(p))
-    siblings.extend(get_half_siblings(p))
-    for sib in set(siblings):
-        descendants = get_descendants(sib)
-        master_list.extend(descendants)
+    for member in family_tree.values():
+        if (member == p):
+            continue
+        if len(set(get_ancestors(member)) & set(get_ancestors(p))) > 0:
+            master_list.append(member)
 
     return master_list
 
